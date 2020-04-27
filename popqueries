@@ -1,0 +1,34 @@
+SELECT countries.continent, population_years.year, COUNT(population_years.population) AS 'population in millions'
+FROM countries
+JOIN population_years
+ON countries.id = population_years.country_id
+WHERE continent = 'Oceania' AND year = 2005;
+
+SELECT countries.continent, population_years.year, AVG(population_years.population) AS 'Average Population'
+FROM countries
+JOIN population_years
+ON countries.id = population_years.country_id
+WHERE continent = 'South America' AND year = 2003;
+
+SELECT countries.name, population_years.year, MIN(population_years.population) AS 'Population'
+FROM countries
+JOIN population_years
+ON countries.id = population_years.country_id
+WHERE year = 2007;
+
+SELECT countries.name, AVG(population_years.population) AS 'Average Population'
+FROM countries
+JOIN population_years
+ON countries.id = population_years.country_id
+WHERE name = 'Poland';
+
+SELECT COUNT(name)
+FROM countries
+WHERE name LIKE '%The%';
+
+SELECT countries.continent, population_years.year, SUM(population_years.population)
+FROM countries
+JOIN population_years
+ON countries.id = population_years.country_id
+WHERE year = 2010
+GROUP BY countries.continent;
